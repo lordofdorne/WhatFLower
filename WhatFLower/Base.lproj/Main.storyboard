@@ -16,15 +16,27 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2vh-6x-ceb">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="414"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="2vh-6x-ceb" secondAttribute="height" multiplier="1:1" id="cOF-Eb-dBp"/>
+                                </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="BWL-zL-M3u">
+                                <rect key="frame" x="20" y="480" width="374" height="382"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="2vh-6x-ceb" firstAttribute="top" secondItem="EQB-Zf-teI" secondAttribute="top" id="9LC-xa-87J"/>
-                            <constraint firstItem="2vh-6x-ceb" firstAttribute="trailing" secondItem="EQB-Zf-teI" secondAttribute="trailing" id="OWk-n9-BFW"/>
-                            <constraint firstItem="EQB-Zf-teI" firstAttribute="bottom" secondItem="2vh-6x-ceb" secondAttribute="bottom" id="Q7a-rb-tsZ"/>
-                            <constraint firstItem="2vh-6x-ceb" firstAttribute="leading" secondItem="EQB-Zf-teI" secondAttribute="leading" id="b4y-8S-Glb"/>
+                            <constraint firstItem="2vh-6x-ceb" firstAttribute="leading" secondItem="EQB-Zf-teI" secondAttribute="leading" id="Jxc-Nv-Aky"/>
+                            <constraint firstItem="BWL-zL-M3u" firstAttribute="top" secondItem="2vh-6x-ceb" secondAttribute="bottom" constant="66" id="LXL-qU-ncr"/>
+                            <constraint firstItem="BWL-zL-M3u" firstAttribute="leading" secondItem="EQB-Zf-teI" secondAttribute="leading" constant="20" id="TWK-wh-amM"/>
+                            <constraint firstItem="EQB-Zf-teI" firstAttribute="trailing" secondItem="BWL-zL-M3u" secondAttribute="trailing" constant="20" id="W7P-UY-8Ly"/>
+                            <constraint firstItem="2vh-6x-ceb" firstAttribute="trailing" secondItem="EQB-Zf-teI" secondAttribute="trailing" id="Wxf-Wf-2hp"/>
+                            <constraint firstItem="BWL-zL-M3u" firstAttribute="bottom" secondItem="EQB-Zf-teI" secondAttribute="bottom" id="X0f-B6-skT"/>
+                            <constraint firstItem="2vh-6x-ceb" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="fkV-Ye-mx4"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="EQB-Zf-teI"/>
                     </view>
@@ -37,6 +49,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="imageView" destination="2vh-6x-ceb" id="uNr-kt-o3o"/>
+                        <outlet property="label" destination="BWL-zL-M3u" id="AP2-sh-afq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
