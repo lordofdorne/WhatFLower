@@ -15,6 +15,7 @@ import SwiftyJSON
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    let wikipediaURL = "https://en.wikipedia.org/w/api.php"
     let imagePicker = UIImagePickerController()
 
     @IBOutlet weak var imageView: UIImageView!
@@ -49,10 +50,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             fatalError("cannot import model")
         }
         let request = VNCoreMLRequest(model: model)  { (request, error) in
-            let classification = request.results?.first as? VNClassificationObservation
+            guard let classification = request.results?.first as? VNClassificationObservation else {
+                fatalError("could not classify flower")
+            }
             
             
-            self.navigationItem.title = classification?.identifier.capitalized
+            self.navigationItem.title = classification.identifier.capitalized
+            self.infoRequest(flowerName: classification.identifier)
         }
         
         let handler = VNImageRequestHandler(ciImage: image)
@@ -65,6 +69,27 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             }
         }
     
+    func infoRequest(flowerName: String) {
+        
+        let parameters : [String:String] = [
+         "format" : "json",
+         "action" : "query",
+         "prop" : "extracts",
+         "exintro" : "",
+         "explaintext" : "",
+         "titles" : flowerName,
+         "indexpageids" : "",
+         "redirects" : "1",
+         ]
+
+        
+        Alamofire.request(wikipediaURL, method: .get, parameters: parameters).responseJSON { (response) in
+            if response.result.isSuccess {
+                print("Got the wikipedia info.")
+                print(response)
+            }
+        }
+    }
    
     @IBAction func cameraTapped(_ sender: UIBarButtonItem) {
         
